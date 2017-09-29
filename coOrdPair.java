@@ -9,7 +9,7 @@
 public class coOrdPair
 {
     /** description of instance variable x (add comment for each instance variable) */
-    private int x, y;
+    public int x, y;
 
     /**
      * Default constructor for objects of class coOrdPair
@@ -19,6 +19,12 @@ public class coOrdPair
         this.x = x;
         this.y = y;
     }
+    
+    public int getY(){
+        return this.y;  }
+    
+    public int getX(){
+        return this.x;  }
 
     
 

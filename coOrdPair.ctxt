@@ -2,4 +2,8 @@
 comment0.params=x\ y
 comment0.target=coOrdPair(int,\ int)
 comment0.text=\r\n\ Default\ constructor\ for\ objects\ of\ class\ coOrdPair\r\n
-numComments=1
+comment1.params=
+comment1.target=int\ getY()
+comment2.params=
+comment2.target=int\ getX()
+numComments=3
