@@ -17,50 +17,56 @@ public class Grid
    {
      PairList.push(new coOrdPair(row, column));
      
-     while (!PairList.empty()){
+     while (num <= 100){
           
          if(pixels[row][column] == 0){  // test for empty starting point            
-            constant = PairList.pop();
-            x = constant.getX();
-            y = constant.getY();
-            pixels[row][column] = num; // put first number in starting point of array
-            PairList.push(new coOrdPair(x, y--));
-            num++;
+            x = column;
+            y = row;
+            pixels[x][y] = num;
+            num++;         
+            PairList.push(new coOrdPair(x--, y));
            }          
             else{
            
-            if (row - 1 >= 0 && pixels[row-1][column] == 0 ){
+            if (y - 1 >= 0 && pixels[x][y-1] == 0){
+               constant = PairList.pop();
+               x = constant.getX();
+               y = constant.getY();
+               pixels[x--][y] = num; // put first number in starting point of array
+               PairList.push(new coOrdPair(x--, y));
+               num++; 
+   
+            }
+                            
+            if (x - 1 >= 0 && pixels[x-1][y] == 0 ){
                 constant = PairList.pop();
                 x = constant.getX();
                 y = constant.getY();
-                pixels[row][column] = num; // enter next num into double array
+                pixels[x][y--] = num; // enter next num into double array
                 PairList.push(new coOrdPair(x++, y));
                 num++;
                 
              }
                 
-            if (column + 1 < SIZE && pixels[row][column+1] == 0 ){
+            if (y + 1 < SIZE && pixels[x][y+1] == 0 ){
                 constant = PairList.pop();
                 x = constant.getX();
                 y = constant.getY();
-                pixels[row][column] = num; // enter next num into double array
+                pixels[x++][y] = num; // enter next num into double array
                 PairList.push(new coOrdPair(x, y++));
                 num++;
                 
             }
                 
-            if (row+1 < SIZE && pixels[row+1][column] == 0){
-                
+            if (x+1 < SIZE && pixels[x+1][y] == 0){
+                constant = PairList.pop();
+               x = constant.getX();
+               y = constant.getY();
+               pixels[x][y++] = num; // put first number in starting point of array
+               PairList.push(new coOrdPair(x--, y));
+               num++;
      
-            }         
-            
-                      
-            
-            if (column - 1 >= 0 && pixels[row][column-1] == 0){
-                
-   
-            }
-            
+            }             
             
         }
       }
