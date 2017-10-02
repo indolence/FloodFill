@@ -15,7 +15,7 @@ public class Grid
    */
    public void floodfill(int row, int column)
    {
-     PairList.push(new coOrdPair(row, column));
+     // take this out - double pop. stack PairList.push(new coOrdPair(row, column));
      
      while (num <= 100){
           
