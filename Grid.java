@@ -20,53 +20,28 @@ public class Grid
      while (num <= 100){
           
          if(pixels[row][column] == 0){  // test for empty starting point            
-            x = column;
-            y = row;
-            pixels[x][y] = num;
-            num++;         
-            PairList.push(new coOrdPair(x--, y));
+            PairList.push(new coOrdPair(row, column)); // enter onto stack
+            pixels[row][column] = num; // assing non-0 number, false for recursion
+            num++;  // increase num       
+            
            }          
-            else{
+            while (!PairList.empty()){
            
-            if (y - 1 >= 0 && pixels[x][y-1] == 0){
-               constant = PairList.pop();
-               x = constant.getX();
-               y = constant.getY();
-               pixels[x--][y] = num; // put first number in starting point of array
-               PairList.push(new coOrdPair(x--, y));
-               num++; 
-   
+            if (row + 1 <= 9 && pixels[row+1][column] == 0) // tests to make sure there is still room in row, and
+            {                                               // that the space has not been assigned in a previous call
+               PairList.push(new coOrdPair(row+1, column);  // push next pair onto stack
+               pixels[row+1][column] = num;  // assigns space to non-0 number, will come up false in recursion
+               num++;                // increase num
             }
-                            
-            if (x - 1 >= 0 && pixels[x-1][y] == 0 ){
-                constant = PairList.pop();
-                x = constant.getX();
-                y = constant.getY();
-                pixels[x][y--] = num; // enter next num into double array
-                PairList.push(new coOrdPair(x++, y));
-                num++;
-                
-             }
-                
-            if (y + 1 < SIZE && pixels[x][y+1] == 0 ){
-                constant = PairList.pop();
-                x = constant.getX();
-                y = constant.getY();
-                pixels[x++][y] = num; // enter next num into double array
-                PairList.push(new coOrdPair(x, y++));
-                num++;
-                
+               
             }
-                
-            if (x+1 < SIZE && pixels[x+1][y] == 0){
-                constant = PairList.pop();
-               x = constant.getX();
-               y = constant.getY();
-               pixels[x][y++] = num; // put first number in starting point of array
-               PairList.push(new coOrdPair(x--, y));
-               num++;
-     
-            }             
+               
+       CoOrdPair coord = PairList.pop();
+               x = coord.getX;
+               y = coord.getY;
+               floodfill(x, y) // remember Mr Hayes example - when it runs out of
+                               // spaces, it goes back to LAST ONE on stack, and runs it again
+                       
             
         }
       }
